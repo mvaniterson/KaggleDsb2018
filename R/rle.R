@@ -28,9 +28,8 @@ rle2masks <- function(encodings, shape) {
     for(i in 1:length(encodings))
         masks <- masks + rle2mask(encodings[i], shape)
 
-    ## Check if all masks are non-overlapping
-    if(!all(masks <= 1))
-        message("Overlapping masks")
+    if(any(masks > 1))
+        message("Overlapping masks!")
     masks
 }
 
@@ -39,7 +38,7 @@ image2rle <- function(image){
 
     labels <- 1:max(image) ## assuming background  == 0
 
-    x <- as.vector(t(EBImage::imageData(image)))
+    x <- as.vector(t(image)) ##colum-wise
 
     encoding <- rle(x)
 
@@ -48,9 +47,13 @@ image2rle <- function(image){
 
     mask2rle <- function(label, enc) {
         indices <- enc$values == label
-        paste(enc$positions[indices], enc$lengths[indices], collapse=" ")
+        list(position = enc$positions[indices][1],
+             encoding = paste(enc$positions[indices], enc$lengths[indices], collapse=" "))
     }
 
-    map(labels, mask2rle, encoding) %>%
-        setNames(labels)
+    ##return encodings with increasing positions
+    map_df(labels, mask2rle, encoding) %>%
+        arrange(position) %>%
+        pull(encoding)
+
 }
