@@ -165,7 +165,7 @@ display(combine(rand_images$Y[[1]], rand_images$X[[1]]), all = TRUE, nx = 4)
 ```
 
 
-![png](output_12_0.png)
+![png](notebook/output_12_0.png)
 
 
 ## Define U-Net
@@ -468,7 +468,7 @@ plot(history)
 
 
 
-![png](output_25_1.png)
+![png](notebook/output_25_1.png)
 
 
 Optionally save the model:
@@ -496,7 +496,7 @@ display(combine(Y[1,,,], X[1,,,]), all = TRUE, nx = 4)
 ```
 
 
-![png](output_31_0.png)
+![png](notebook/output_31_0.png)
 
 
 Display original with predicted masks:
@@ -507,7 +507,7 @@ display(combine(Y[1,,,], Y_hat[1,,,]), all = TRUE)
 ```
 
 
-![png](output_33_0.png)
+![png](notebook/output_33_0.png)
 
 
 ## Intersection over Union and Mean Precision
@@ -559,7 +559,7 @@ boxplot(mp)
 
 
 
-![png](output_37_1.png)
+![png](notebook/output_37_1.png)
 
 
 ## Perform predictions on the test images
@@ -609,7 +609,7 @@ display(combine(X[1,,,], Y_hat[1,,,]), all = TRUE, nx = 4)
 
 
 
-![png](output_41_1.png)
+![png](notebook/output_41_1.png)
 
 
 Perform encoding:
@@ -680,7 +680,7 @@ display(combine(Y_hat[1,,,], X[1,,,]), all = TRUE, nx = 4)
 
 
 
-![png](output_45_1.png)
+![png](notebook/output_45_1.png)
 
 
 Submit:
