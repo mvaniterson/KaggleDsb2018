@@ -40,8 +40,6 @@ preprocess_masks <- function(encoding, old_shape, new_shape = NULL){
 }
 
 postprocess_image <- function(image, shape){
-    image <- image[,,1] > .2                           ## convert to binary
     image <- resize(image, w = shape[1], h = shape[2]) ## resize to origal dimensions
-    image <- bwlabel(image)                            ## label segments
     image2rle(image)                                   ## encoding     
 }

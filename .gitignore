@@ -1,2 +1,4 @@
 .ipynb_checkpoints/*
 submission.csv
+*.hdf5
+.Rhistory
